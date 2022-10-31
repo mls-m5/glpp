@@ -5,6 +5,8 @@
 #include <GL/gl.h>
 #include <GL/glext.h>
 
+namespace gl {
+
 namespace detail {
 
 inline void deleteBuffers(GLuint buffer) {
@@ -34,3 +36,5 @@ public:
 
     GLenum type = 0;
 };
+
+} // namespace gl

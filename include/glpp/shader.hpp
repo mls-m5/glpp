@@ -42,7 +42,7 @@ public:
     }
 };
 
-Shader loadShader(GLenum type, const std::string_view src) {
+inline Shader loadShader(GLenum type, const std::string_view src) {
     auto shader = Shader{type};
 
     if (!shader) {
