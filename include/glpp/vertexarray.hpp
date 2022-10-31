@@ -1,6 +1,7 @@
 #pragma once
 
 #include "gl-backend.hpp"
+#include "matgui/gl-error-handling.h"
 #include "unique.hpp"
 #include <GL/gl.h>
 #include <GL/glext.h>
@@ -22,7 +23,7 @@ public:
     }
 
     void bind() const {
-        glBindVertexArray(*this);
+        glCall(glBindVertexArray(*this));
     }
 
     static void unbind() {

@@ -45,24 +45,24 @@ public:
         glLinkProgram(*this);
     }
 
-    GLint uniform(const char *name) const {
+    GLint uniform(const char *name, bool soft = false) const {
         auto u = glGetUniformLocation(*this, name);
-        if (u < 0) {
+        if (u < 0 && !soft) {
             throw LookupError{"could not find uniform " + std::string{name}};
         }
         return u;
     }
 
-    GLint attribute(const char *name) const {
+    GLint attribute(const char *name, bool soft = false) const {
         auto a = glGetAttribLocation(*this, name);
-        if (a < 0) {
+        if (a < 0 && !soft) {
             throw LookupError{"could not find attribute " + std::string{name}};
         }
         return a;
     }
 
     void use() {
-        glUseProgram(*this);
+        glCall(glUseProgram(*this));
     }
 };
 
@@ -75,7 +75,7 @@ inline Program createProgram(std::string_view vertexSrc,
     program.attach(vertexShader);
     program.attach(fragmentShader);
 
-    program.link();
+    glCall(program.link());
     if (!program.iv(GL_LINK_STATUS)) {
         throw ProgramLinkError{"failed to link shader program:\n" +
                                program.infoLog()};
