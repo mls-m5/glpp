@@ -1,14 +1,13 @@
-#include "glm/ext/matrix_transform.hpp"
-#include "glm/glm.hpp"
-#include "glpp/buffer.hpp"
-#include "glpp/program.hpp"
-#include "glpp/vertexarray.hpp"
 #include "matgui/application.h"
 #include "matgui/main.h"
 #include "matgui/window.h"
-#include <GL/gl.h>
 #include <array>
+#include <glm/ext/matrix_transform.hpp>
+#include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <glpp/buffer.hpp>
+#include <glpp/program.hpp>
+#include <glpp/vertexarray.hpp>
 
 namespace {
 
