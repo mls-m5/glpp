@@ -18,7 +18,7 @@ class VertexArray : public detail::Unique<GLuint, detail::destroyVertexArray> {
 public:
     VertexArray() {
         GLuint i;
-        glCreateVertexArrays(1, &i);
+        glGenVertexArrays(1, &i);
         reset(i);
     }
 

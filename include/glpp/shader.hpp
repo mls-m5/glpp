@@ -1,6 +1,5 @@
 #pragma once
 
-#include "error.h"
 #include "errors.hpp"
 #include "gl-backend.hpp"
 #include "unique.hpp"
