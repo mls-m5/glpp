@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string_view>
 #define GL_GLEXT_PROTOTYPES 1
 #define GL3_PROTOTYPES 1
 
@@ -8,11 +9,11 @@
 
 #include <stdexcept>
 
-inline int checkGlError2(const char *op) {
+inline int checkGlError2(std::string_view op) {
 #ifndef NO_GRAPHICS
     bool ret = false;
     for (auto error = glGetError(); error; error = glGetError()) {
-        const char *c = nullptr;
+        std::string_view c = {};
         switch (error) {
         case 0x0500:
             c = "GL_INVALID_ENUM";
@@ -45,7 +46,7 @@ inline int checkGlError2(const char *op) {
         //        debug_print("after %s()\n glError (0x%x) %s \n\n", op, error,
         //        c); printGLString(op, error); if (throwError) {
         //            printf("%s\n", c);
-        throw std::runtime_error{c};
+        throw std::runtime_error{std::string{op} + " : " + std::string{c}};
         //        }
     }
     return ret;
