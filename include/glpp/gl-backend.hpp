@@ -43,11 +43,7 @@ inline int checkGlError2(std::string_view op) {
             c = "GL_TABLE_TOO_LARGE1";
             break;
         }
-        //        debug_print("after %s()\n glError (0x%x) %s \n\n", op, error,
-        //        c); printGLString(op, error); if (throwError) {
-        //            printf("%s\n", c);
         throw std::runtime_error{std::string{op} + " : " + std::string{c}};
-        //        }
     }
     return ret;
 #else

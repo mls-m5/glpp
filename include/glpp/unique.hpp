@@ -41,7 +41,10 @@ public:
         }
     }
 
-    void reset(T value) {
+    void reset(T value = {}) {
+        if (_p) {
+            DestroyFunction(_p);
+        }
         _p = value;
     }
 

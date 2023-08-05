@@ -15,7 +15,7 @@ inline void deleteBuffers(GLuint buffer) {
 
 } // namespace detail
 
-class Buffer : gl::detail::Unique<GLuint, detail::deleteBuffers> {
+class Buffer : public gl::detail::Unique<GLuint, detail::deleteBuffers> {
 public:
     // type could be for example GL_ARRAY_BUFFER
     Buffer(GLenum type) : type{type} {
@@ -26,6 +26,10 @@ public:
 
     void bind() const {
         glBindBuffer(type, *this);
+    }
+
+    void unbind() const {
+        glBindBuffer(type, 0);
     }
 
     void data(GLsizeiptr size,
