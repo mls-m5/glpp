@@ -54,6 +54,13 @@ inline int checkGlError2(std::string_view op) {
 #ifndef glCall
 #define glCall(call)                                                           \
     call;                                                                      \
-    checkGlError2(#call)
+    try {                                                                      \
+        checkGlError2(#call);                                                  \
+    }                                                                          \
+    catch (std::runtime_error & e) {                                           \
+        throw e;                                                               \
+    }                                                                          \
+    do {                                                                       \
+    } while (false)
 
 #endif
