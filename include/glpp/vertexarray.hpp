@@ -1,7 +1,6 @@
 #pragma once
 
 #include "gl-backend.hpp"
-#include "matgui/gl-error-handling.h"
 #include "unique.hpp"
 #include <GL/gl.h>
 #include <GL/glext.h>
