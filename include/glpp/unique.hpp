@@ -57,7 +57,7 @@ public:
     }
 
 private:
-    T _p;
+    T _p = {};
 };
 
 } // namespace detail
