@@ -11,7 +11,7 @@
 
 #include <stdexcept>
 
-bool HandleOpenGLDebugMessages(GLuint count) {
+inline bool HandleOpenGLDebugMessages(GLuint count) {
     // Allocate memory for the parameters
     std::vector<GLenum> sources(count);
     std::vector<GLenum> types(count);
