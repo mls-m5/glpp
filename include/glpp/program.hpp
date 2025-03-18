@@ -28,7 +28,7 @@ public:
     }
 
     GLint iv(GLenum name) const {
-        GLint i;
+        auto i = GLint{};
         glGetProgramiv(*this, name, &i);
         return i;
     }

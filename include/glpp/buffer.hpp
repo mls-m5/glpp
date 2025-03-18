@@ -19,7 +19,7 @@ class Buffer : public gl::detail::Unique<GLuint, detail::deleteBuffers> {
 public:
     // type could be for example GL_ARRAY_BUFFER
     Buffer(GLenum type) : type{type} {
-        GLuint i;
+        auto i = GLuint{};
         glGenBuffers(1, &i);
         reset(i);
     }
