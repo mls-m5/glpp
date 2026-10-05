@@ -12,6 +12,11 @@
 #include <stdexcept>
 
 inline bool HandleOpenGLDebugMessages(GLuint count) {
+#ifdef __EMSCRIPTEN__
+    // WebGL does not expose desktop OpenGL debug-message retrieval.
+    (void)count;
+    return false;
+#else
     // Allocate memory for the parameters
     std::vector<GLenum> sources(count);
     std::vector<GLenum> types(count);
@@ -53,6 +58,7 @@ inline bool HandleOpenGLDebugMessages(GLuint count) {
         std::cout << "------------------------------" << std::endl;
     }
     return true;
+#endif
 }
 
 inline int checkGlError2(std::string_view file,
